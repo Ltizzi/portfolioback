@@ -8,15 +8,14 @@ import com.Portfolio.Model.Edu;
 import com.Portfolio.Model.Exp;
 import com.Portfolio.Model.Persona;
 import com.Portfolio.Model.Skills;
-import com.Portfolio.Model.Tipo_trabajo;
+
 import com.Portfolio.Service.IEduService;
 import com.Portfolio.Service.IExpService;
 import com.Portfolio.Service.IPersonaService;
 import com.Portfolio.Service.ISkillsService;
-import com.Portfolio.Service.ITIpo_trabajoService;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
