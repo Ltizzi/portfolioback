@@ -35,18 +35,18 @@ public class PortfolioApplication {
                     return new BCryptPasswordEncoder();
                 }
                 
-                @Bean
-                CommandLineRunner run (UserService userService) {
-                    return args -> {
-                    userService.saveRole(new Role(null, "ROLE_USER"));
-                    userService.saveRole(new Role(null, "ROLE_ADMIN"));
-                    
-                    userService.saveUser(new User(null, "admin", "nosoyadmin123", new ArrayList<>() ));
-                    
-                    userService.addRoleToUser("admin", "ROLE_ADMIN");
-                    
-                    };
-                }
+//                @Bean
+//                CommandLineRunner run (UserService userService) {
+//                    return args -> {
+//                    userService.saveRole(new Role(null, "ROLE_USER"));
+//                    userService.saveRole(new Role(null, "ROLE_ADMIN"));
+//                    
+//                    userService.saveUser(new User(null, "admin", "nosoyadmin123", new ArrayList<>() ));
+//                    
+//                    userService.addRoleToUser("admin", "ROLE_ADMIN");
+//                    
+//                    };
+//                }
                 
                 
                 
