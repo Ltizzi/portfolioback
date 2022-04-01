@@ -1,9 +1,12 @@
 package com.Portfolio;
 
+import com.Portfolio.Model.Persona;
 import com.Portfolio.Model.Role;
 import com.Portfolio.Model.User;
+import com.Portfolio.Service.IPersonaService;
 import com.Portfolio.Service.UserService;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,12 +23,16 @@ public class PortfolioApplication {
 		SpringApplication.run(PortfolioApplication.class, args);
 	}
                 
-                @Bean
+                 @Bean
         	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedHeaders("*").allowedMethods("*").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/**")
+                                                                            .allowedHeaders("*")
+                                                                            .allowedMethods("*")
+                                                                            .allowCredentials(false)
+                                                                            .allowedOrigins("*");
 			}
 		};
 	}
@@ -47,6 +54,8 @@ public class PortfolioApplication {
 //                    
 //                    };
 //                }
+                
+               
                 
                 
                 

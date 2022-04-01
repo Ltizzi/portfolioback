@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration @EnableWebSecurity @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
@@ -35,15 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(GET, "/persona/**", "/exp/**", "/edu/**", "/skill/**");
+        
     }
     
     
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
         CAuthZFilter caf = new CAuthZFilter(authenticationManagerBean());
-        
         caf.setFilterProcessesUrl("/api/login");
         http.cors();
         http.csrf().disable();
@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    
+     
     
     
     

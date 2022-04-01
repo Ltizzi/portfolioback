@@ -19,7 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class AuthController {
     
     
@@ -27,19 +27,20 @@ public class AuthController {
     @Autowired
     private final UserService userServ;
     
+    @CrossOrigin
     @GetMapping("/user/save")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user(save").toUriString());
         return ResponseEntity.created(uri).body(userServ.saveUser(user));
     
     }
-    
+    @CrossOrigin
     @PostMapping("/role/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/apu/role/save").toUriString());
         return ResponseEntity.created(uri).body(userServ.saveRole(role));
     } 
-    
+    @CrossOrigin
     @PostMapping("/role/addtouser")
     public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserForm form) {
         userServ.addRoleToUser(form.getUsername(), form.getRoleName());
