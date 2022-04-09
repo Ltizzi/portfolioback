@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.OPTIONS;
 import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(GET, "/persona/**", "/exp/**", "/edu/**", "/skill/**");
+        web.ignoring().antMatchers(GET, "/persona/**", "/exp/**", "/edu/**", "/skill/**", "/proyecto/**");
         
     }
     
@@ -45,15 +46,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         CAuthZFilter caf = new CAuthZFilter(authenticationManagerBean());
         caf.setFilterProcessesUrl("/api/login");
-        http.cors();
-        http.csrf().disable();
+        http.cors().and().csrf().disable();
+  
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.anonymous();
-        http.authorizeHttpRequests().antMatchers(GET, "/persona/ver").permitAll();
-        http.authorizeHttpRequests().antMatchers(GET, "/edu/**").permitAll();
-        http.authorizeHttpRequests().antMatchers(GET, "/exp/**").permitAll();
-        http.authorizeHttpRequests().antMatchers(GET, "/skill/**").permitAll();
-        http.authorizeHttpRequests().antMatchers(GET, "/api/login/").permitAll();
+        http.authorizeHttpRequests().antMatchers(OPTIONS, "/**").permitAll();
+        http.authorizeHttpRequests().antMatchers(GET, "/persona/ver","/edu/**", "/exp/**","/skill/**","/api/login/", "/proyecto/**").permitAll();
         http.authorizeHttpRequests().antMatchers(POST, "/persona/**", "/exp/**", "/edu/**", "/skill/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeHttpRequests().antMatchers(DELETE, "/persona/**", "/exp/**", "/edu/**", "/skill/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeHttpRequests().antMatchers(PATCH, "/persona/**", "/exp/**", "/edu/**", "/skill/**").hasAnyAuthority("ROLE_ADMIN");

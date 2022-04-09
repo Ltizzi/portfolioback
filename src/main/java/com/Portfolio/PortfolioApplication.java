@@ -32,7 +32,7 @@ public class PortfolioApplication {
                                                                             .allowedHeaders("*")
                                                                             .allowedMethods("*")
                                                                             .allowCredentials(false)
-                                                                            .allowedOrigins("*");
+                                                                            .allowedOrigins("*");  //https://ltizzi-portfolio-test.web.app
 			}
 		};
 	}

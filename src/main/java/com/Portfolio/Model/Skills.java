@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToOne;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class Skills {
     
@@ -26,28 +28,5 @@ public class Skills {
 //    @ManyToOne
 //    @JoinColumn(name ="persona_id")
 //    private Persona persona_id;
-
-    public Skills() {
-    }
-
-    public Skills(Long skill_id, String skill_nombre, String nivel, String url_icon, String descripcion) {
-        this.skill_id = skill_id;
-        this.skill_nombre = skill_nombre;
-        this.nivel = nivel;
-        this.url_icon = url_icon;
-        this.descripcion = descripcion;
-    }
-
-
-    
-
-    
-
- 
-    
-    
-    
-    
-    
     
 }

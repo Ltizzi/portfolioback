@@ -2,7 +2,7 @@
 
 package com.Portfolio.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +13,12 @@ import javax.persistence.Id;
 //import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class Exp {
     
@@ -42,30 +44,5 @@ public class Exp {
 //    @OneToOne
 //    @JoinColumn(name ="tipo_id")
 //    private Tipo_trabajo tipo_id;
-
-    public Exp() {
-    }
-
-    public Exp(Long exp_id, String titulo, String empresa, String about, Date fecha_inicio, Date fecha_finalizado, String tipo_trabajo, String url_img) {
-        this.exp_id = exp_id;
-        this.titulo = titulo;
-        this.empresa = empresa;
-        this.about = about;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_finalizado = fecha_finalizado;
-        this.tipo_trabajo = tipo_trabajo;
-        this.url_img = url_img;
-    }
-
-    
-
-  
-
-    
-
-   
-
-    
-    
     
 }

@@ -11,10 +11,12 @@ import javax.persistence.Id;
 //import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class Edu {
     
@@ -38,19 +40,6 @@ public class Edu {
 //     @JoinColumn(name ="persona_id")
 //    private Persona persona_id;
 
-    public Edu() {
-    }
-
-    public Edu(Long edu_id, String titulo, String institucion, String url_institucion, String img_descriptiva, Date fecha_inicio, Date fecha_finalizado, String descripcion) {
-        this.edu_id = edu_id;
-        this.titulo = titulo;
-        this.institucion = institucion;
-        this.url_institucion = url_institucion;
-        this.img_descriptiva = img_descriptiva;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_finalizado = fecha_finalizado;
-        this.descripcion = descripcion;
-    }
 
 
 
