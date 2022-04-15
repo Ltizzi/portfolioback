@@ -6,11 +6,13 @@ import com.Portfolio.Filter.CAuthZFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.OPTIONS;
 import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(GET, "/persona/**", "/exp/**", "/edu/**", "/skill/**", "/proyecto/**");
+//        web.ignoring().antMatchers( HttpMethod.OPTIONS, "/**" );
         
     }
     
@@ -52,9 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.anonymous();
         http.authorizeHttpRequests().antMatchers(OPTIONS, "/**").permitAll();
         http.authorizeHttpRequests().antMatchers(GET, "/persona/ver","/edu/**", "/exp/**","/skill/**","/api/login/", "/proyecto/**").permitAll();
-        http.authorizeHttpRequests().antMatchers(POST, "/persona/**", "/exp/**", "/edu/**", "/skill/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeHttpRequests().antMatchers(DELETE, "/persona/**", "/exp/**", "/edu/**", "/skill/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeHttpRequests().antMatchers(PATCH, "/persona/**", "/exp/**", "/edu/**", "/skill/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().antMatchers(POST, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().antMatchers(DELETE, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().antMatchers(PATCH, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(POST, "/api/user/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
