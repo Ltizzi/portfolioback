@@ -32,7 +32,7 @@ public class PortfolioApplication {
                                                                             .allowedHeaders("*")
                                                                             .allowedMethods("*")
                                                                             .allowCredentials(false)
-                                                                            .allowedOrigins("*");  //https://ltizzi-portfolio-test.web.app
+                                                                            .allowedOrigins("https://ltizzi-portfolio.web.app");  //https://ltizzi-portfolio-test.web.app
 			}
 		};
 	}
@@ -45,10 +45,10 @@ public class PortfolioApplication {
 //                @Bean
 //                CommandLineRunner run (UserService userService) {
 //                    return args -> {
-//                    userService.saveRole(new Role(null, "ROLE_USER"));
-//                    userService.saveRole(new Role(null, "ROLE_ADMIN"));
+////                    userService.saveRole(new Role(null, "ROLE_USER"));
+////                    userService.saveRole(new Role(null, "ROLE_ADMIN"));
 //                    
-//                    userService.saveUser(new User(null, "admin", "nosoyadmin123", new ArrayList<>() ));
+//                    userService.saveUser(new User(null, "usertest", "argprog123", new ArrayList<>() ));
 //                    
 //                    userService.addRoleToUser("admin", "ROLE_ADMIN");
 //                    

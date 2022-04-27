@@ -32,6 +32,7 @@ public class Exp {
      @Temporal(TemporalType.DATE)
  //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date fecha_inicio;
+     
     @Temporal(TemporalType.DATE)
     private Date fecha_finalizado;
     private String tipo_trabajo;

@@ -58,7 +58,7 @@ public class CAuthZFilter extends UsernamePasswordAuthenticationFilter{
         
         User user = (User)authentication.getPrincipal();
         
-        Algorithm algorithm = Algorithm.HMAC256("MOQObo80HWV3h1SsFvdSSYhxQo34zWf6".getBytes());
+        Algorithm algorithm = Algorithm.HMAC256("secret-key".getBytes());
         
         String token = JWT.create()
                     .withSubject(user.getUsername())

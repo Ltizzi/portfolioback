@@ -44,7 +44,7 @@ public class CAuthCFilter extends OncePerRequestFilter{
             if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
                 try {
                     String token = authorizationHeader.substring("Bearer ".length());
-                    Algorithm algorithm = Algorithm.HMAC256("MOQObo80HWV3h1SsFvdSSYhxQo34zWf6".getBytes());
+                    Algorithm algorithm = Algorithm.HMAC256("secret-key".getBytes());
                     JWTVerifier verifier = JWT.require(algorithm).build();
                     DecodedJWT decodedJWT = verifier.verify(token);
                     String username = decodedJWT.getSubject();

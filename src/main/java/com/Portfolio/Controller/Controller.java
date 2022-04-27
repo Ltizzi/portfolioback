@@ -1,10 +1,12 @@
 
 package com.Portfolio.Controller;
+import com.Portfolio.Model.Contacto;
 import com.Portfolio.Model.Edu;
 import com.Portfolio.Model.Exp;
 import com.Portfolio.Model.Persona;
 import com.Portfolio.Model.Proyecto;
 import com.Portfolio.Model.Skills;
+import com.Portfolio.Service.IContactoService;
 
 import com.Portfolio.Service.IEduService;
 import com.Portfolio.Service.IExpService;
@@ -52,6 +54,9 @@ public class Controller {
     
     @Autowired
     private IProyectoService proyServ;
+    
+    @Autowired
+    private IContactoService contServ;
     
 //    @Autowired
 //    private ITIpo_trabajoService tipoServ;
@@ -260,6 +265,36 @@ public class Controller {
     }
     
     
+    // Contactos
+    
+    @PostMapping ("/contacto/new")
+    public void agregarContacto (@RequestBody Contacto contacto) {
+        contServ.crearContacto(contacto);
+    }
+    
+    @GetMapping ("/contacto/ver")
+    @ResponseBody
+    public List<Contacto> verContactos() {
+        
+        return contServ.verContactos();
+
+    }
+    
+    @DeleteMapping ("/contacto/delete")
+    public void borrarContacto (@RequestParam Long id) {
+        contServ.eliminarContacto(id);
+    }
+    
+    @GetMapping ("/contacto/buscar")
+    @ResponseBody
+    public Contacto buscarContacto (@RequestParam Long id) {
+        return contServ.buscarContacto(id);
+    }
+    
+    @PatchMapping ("/contacto/edit")
+    public void editarContacto (@RequestBody Contacto contacto, @RequestParam Long id) {
+        contServ.editarContacto(contacto);
+    }
     
     
     

@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(GET, "/persona/**", "/exp/**", "/edu/**", "/skill/**", "/proyecto/**");
+        web.ignoring().antMatchers(POST, "/contacto/**");
 //        web.ignoring().antMatchers( HttpMethod.OPTIONS, "/**" );
         
     }
@@ -55,9 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.anonymous();
         http.authorizeHttpRequests().antMatchers(OPTIONS, "/**").permitAll();
         http.authorizeHttpRequests().antMatchers(GET, "/persona/ver","/edu/**", "/exp/**","/skill/**","/api/login/", "/proyecto/**").permitAll();
+        http.authorizeHttpRequests().antMatchers(POST,  "/contacto/**").permitAll();
         http.authorizeHttpRequests().antMatchers(POST, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeHttpRequests().antMatchers(DELETE, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeHttpRequests().antMatchers(PATCH, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().antMatchers(GET,  "/contacto/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().antMatchers(DELETE, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**", "/contacto/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().antMatchers(PATCH, "/persona/**", "/exp/**", "/edu/**", "/skill/**","/proyecto/**", "/contacto/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(POST, "/api/user/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
